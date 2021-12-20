@@ -3,10 +3,10 @@ class Model {
 
 
     protected $bd;
-    protected $usuari="u476207027_DAWM07";
-    protected $password="Segre1973";
+    protected $usuari="root";
+    protected $password="usuari";
     protected $taula;
-    protected $database ="u476207027_DAWM07";
+    protected $database ="supers";
 
     function __construct() {
 		 

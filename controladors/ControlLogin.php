@@ -22,27 +22,25 @@ class controllogin {
             $user = $_POST['username'];
             $pwd = $_POST['password'];
             if ($user != "" && $pwd != "") {
-                echo $user." ".md5($pwd);
+                
                 if ($this->usuaris->valida($user, $pwd)) {
                     $_SESSION['username'] = $user;
-                    $rol = $this->usuaris->getRol($user);
-                    // Desar el rol en la sessiÃ³
-                    $_SESSION['rol']=$rol;                                     
+                                                         
                     header('Location: index.php');
                     exit;
                 } else {
                     $_SESSION['missatge'] = "Usuari o password incorrectes";
-                    header('Location: index.php?control=controllogin');
+                    header('Location: index.php?control=ControlLogin');
                     exit;
                 }
             } else {
                 $_SESSION['missatge'] = "camps obligatoris!!!";
-                header('Location: index.php?control=controllogin');
+                header('Location: index.php?control=ControlLogin');
                 exit;
             }
         } else {
             $_SESSION['missatge'] = "Has de passar pel formulari";
-            header('Location: index.php?control=controllogin');
+            header('Location: index.php?control=ControlLogin');
             exit;
         }
     }
@@ -50,7 +48,8 @@ class controllogin {
     public function logout() {
         $_SESSION = [];
         session_unset();
-         header('Location: index.php?control=controllogin');
+        session_destroy();
+         header('Location: index.php?control=ControlLogin');
     }
 
 }

@@ -25,7 +25,7 @@
                     <label>Password</label>
                     <input type="password" name="password" class="form-control">
                 </div>
-                <div class="form-group">                   
+                <div class="form-group">                 
                    <button type="submit" class="btn btn-primary">Entrar</button>
                 </div>
                 <label><b>Usuari:</b> enric   <b>password:</b> z67yeeui</label>

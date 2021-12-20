@@ -13,7 +13,7 @@
       <th scope="col">Nom Súper</th>
       <th scope="col">Nom real</th>
       <th scope="col">Gènere</th>
-      <th scope="col">Procedència</th>
+      <th scope="col">Procedència</th>     
       <th scope="col" colspan="3">Operacions</th>
              
     </tr>
@@ -30,14 +30,13 @@
 		echo "<td>".$super['realname']."</td>";
 		echo "<td>".$super['gender']."</td>";
 		echo "<td>".$super['race']."</td>";
-		// echo "<td>".$projecte['estat']."</td>";
+    
 		
 		echo "<td><a href='index.php?control=ControlSuperheroes&operacio=delete&codi=".$super['id']."'>
                      Esborrar</td>";
 		echo "<td><a href='index.php?control=ControlSuperheroes&operacio=showformupdate&codi=".$super['id']."'>
                      Actualitzar</td>";
-                echo "<td><a href='index.php?control=ControlSuperheroes&operacio=showPowerlist&codi=".$super['id']."'>
-                     poders</td>";
+                
 		echo "</tr>";
         }
         echo "</table>";
@@ -50,14 +49,8 @@
 		
 ?>
 
-<nav >
-  <ul class="pagination">
-    <?php
-          for ($i=1; $i<=$total_pags; $i++) {
-          echo "<li class='page-item'><a class='page-link' href='index.php?control=ControlSuperheroes&page=".$i."' >".$i."</a></li>";
-      }
-    ?>
-  </ul>
-</nav>
+
+
+
 
 </div>

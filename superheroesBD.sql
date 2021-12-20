@@ -100,3 +100,24 @@ INSERT INTO heroeshabilities (idheroe, idpower, level) VALUES
 (5, 30, NULL),
 (5, 24, NULL),
 (5, 34, NULL);
+
+CREATE TABLE usuaris (
+  nom varchar(25) NOT NULL,
+  cognoms varchar(50) NOT NULL,
+  email varchar(50) NOT NULL,
+  username varchar(25) NOT NULL PRIMARY KEY,
+  password varchar(100) NOT NULL UNIQUE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `usuaris` (`nom`, `cognoms`, `email`, `username`, `password`) VALUES ('enric', 'Pou Ponts', 'ponts@vidalibarraquer.net', 'enric', MD5('z67yeeui'));
+
+ALTER TABLE superpowers ADD (mesura VARCHAR(25));
+
+CREATE TABLE mesures (nom VARCHAR(25) PRIMARY KEY);
+insert into mesures(nom) values("km/h");
+insert into mesures(nom) values("km");
+insert into mesures(nom) values("jules");
+insert into mesures(nom) values("watts");
+
+ALTER TABLE heroes ADD (puntuacio INT(3));
+UPDATE heroes set puntuacio = 0;

@@ -52,16 +52,7 @@ class Usuaris extends Model{
 
   }
   
-  public function getRol($nom){
-       $sql = "SELECT * from usuaris where username = :nom";
-       $sentencia = $this->bd->prepare($sql);
-       $sentencia->bindValue(':nom',$nom);
-       $sentencia->execute();
-       $tipus = $sentencia->fetch(PDO::FETCH_ASSOC);
-	
-       return $tipus['rol'];
-  }
-
+  
 
 
 
