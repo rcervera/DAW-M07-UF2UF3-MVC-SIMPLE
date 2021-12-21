@@ -18,11 +18,12 @@ INSERT INTO heroes (id, realname, heroname, gender, race) VALUES
 
 
 CREATE TABLE usuaris (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   nom varchar(25) NOT NULL,
   cognoms varchar(50) NOT NULL,
-  email varchar(50) NOT NULL,
-  username varchar(25) NOT NULL PRIMARY KEY,
-  password varchar(100) NOT NULL UNIQUE
+  email varchar(50) NOT NULL UNIQUE,
+  username varchar(25) NOT NULL UNIQUE,
+  password varchar(100) NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `usuaris` (`nom`, `cognoms`, `email`, `username`, `password`) VALUES ('enric', 'Pou Ponts', 'ponts@vidalibarraquer.net', 'enric', MD5('z67yeeui'));
