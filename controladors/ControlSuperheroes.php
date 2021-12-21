@@ -95,90 +95,44 @@ class ControlSuperheroes {
     public function showformupdate() {
         // Via GET ens passaran el codi de l'heroi que volem modificar
         // Comprovem l'existència del paràmetre
-        if(!isset($_GET['codi'])) {
-                $_SESSION['missatge'] = "Has de triar un superheroi!";
-                header("Location: index.php?control=ControlSuperheroes");
-                exit;
-        }
+        
         // Recuperem de la BD el super que volem modificar 
         $codi = $_GET['codi'];     
         $actual = $this->supers->get($codi);
         
         // Si el id de l'heroi no és correcte i no s'ha pogut recuperar
         // no continuem!
-        if (!$actual) {   
-            $_SESSION['missatge'] = "Aquest superheroi no existeix!";
-            header("Location: index.php?control=ControlSuperheroes");
-            exit;
-        }    
+        
         
         // Quan es carregui el formulari per primer cop
         // volem que es mostrin les dades actuals del superheroi.
         //      En cas que ja existeixin, voldrà dir que s'ha recarregat aquest formulari
         //      d'actualització perque les dades dels controls del formulari no són correctes
-        if(!isset($_SESSION['dades'] )) {
-            $_SESSION['dades'] = $actual;
-            $_SESSION['errors'] = array();
-        }
-
-        // Mostrem el formulari..
-        include_once 'vistes/templates/header.php';
-        include_once 'vistes/superheroes/formupdate.php';
-        include_once 'vistes/templates/footer.php';       
+       
+        // Mostrem el formulari..        
         
     }
 
     public function update() {
         // Via GET ens passaran el codi de l'heroi que volem modificar
         // Comprovem l'existència del paràmetre
-        if(!isset($_GET['codi'])) {
-                $_SESSION['missatge'] = "Has de triar un superheroi!";
-                header("Location: index.php?control=ControlSuperheroes");
-                exit;
-        }
+        
         // Recuperem de la BD el super que volem modificar 
-        $codi = $_GET['codi'];     
-        $actual = $this->supers->get($codi);
+       
         // Si el id de l'heroi no és correcte i no s'ha pogut recuperar
         // no continuem!
-        if (!$actual) {   
-            $_SESSION['missatge'] = "Aquest superheroi no existeix!";
-            header("Location: index.php?control=ControlSuperheroes");
-            exit;
-        }   
+        
         // Recuperem els camps del formulari
-        $heroname = obtenir_camp('heroname'); 
-        $realname = obtenir_camp('realname');
-        $gender = obtenir_camp('gender');
-        $race = obtenir_camp('race'); 
+        
         // Comprovem les restriccions associades a cada camp  
-        $validator = new Validation();
-            // Només comprovem que no tenim un superheroi amb mateix nom si hem modificat 
-            // aquest camp
-        if($heroname!=$actual['heroname'])
-            $validator->name('heroname')->value($heroname)->required()->notExists('heroes','heroname'); 
-        else $validator->name('heroname')->value($heroname);                
-        $validator->name('realname')->value($realname)->required(); 
-        $validator->name('race')->value($race)->required(); 
-        $opcions=array('male','female','other');                            
-        $validator->name('gender')->value($gender)->isOption($opcions)->required();
-        // Si tenim errors de validació recarreguem el formulari d'actualització
-        // guardant les dades antigues i els errors dins la sessió
-        if(!$validator->isSuccess()) { 
-            $_SESSION['errors'] = $validator->getErrors();
-            $_SESSION['dades'] = $validator->getValues();  
-            header('Location: index.php?control=ControlSuperheroes&operacio=showformupdate&codi='.$codi);
-            exit;
-        }
+             
+           
+        
         // Modifiquem les dades del superheroi guardant possibles canvis en la BD
         // $res = $this->supers->update($codi, $heroname, $realname, $gender, $race);
-        $res = true;
-        if ($res)
-            $_SESSION['missatge'] = "Actualització correcta. Opció deshabilitada!";
-        else
-            $_SESSION['missatge'] = "Actualització incorrecta";
+       
         
-        header("Location: index.php?control=ControlSuperheroes");                
+                     
     }
 
 
